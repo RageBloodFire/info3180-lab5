@@ -68,9 +68,15 @@ def login():
                 flash('Username or Password incorrect.')
     return render_template("login.html", form=form)
 	
+@app.route('/logout')
+def logout():
+    logout_user()
+    flash('Logged out.')
+    return render_template("home.html")
+
 	
 @app.route('/secure-page')
-@login_required
+@login_required	
 def secure_page():
     return render_template("secure_page.html")
 	
